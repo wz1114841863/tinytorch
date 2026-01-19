@@ -1,0 +1,6 @@
+# 环境
+.venv/
+
+# Python 缓存文件
+__pycache__/
+*.egg-info/

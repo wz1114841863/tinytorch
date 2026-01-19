@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tinytorch"
+version = "0.0.1"
+authors = [
+  { name="wz", email="your.email@example.com"},
+]
+description = "A tiny deep learning framework for learning purposes"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy",
+    "pytest",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/wz1114841863/tinytorch"
+
+# 自动发现 srcs 目录下的包
+[tool.setuptools.packages.find]
+where = ["srcs"]
