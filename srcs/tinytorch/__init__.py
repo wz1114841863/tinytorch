@@ -6,3 +6,11 @@ from .core.tensor import Tensor
 from .core.activations import Sigmoid, ReLU, Tanh, GELU, Softmax
 from .core.layers import Linear, Dropout, Sequential
 from .core.losses import BinaryCrossEntropyLoss, CrossEntropyLoss, MSELoss
+from .core.dataloader import (
+    Dataset,
+    DataLoader,
+    TensorDataset,
+    RandomHorizontalFlip,
+    RandomCrop,
+    Compose,
+)
