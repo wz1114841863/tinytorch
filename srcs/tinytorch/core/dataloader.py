@@ -73,7 +73,7 @@ class TensorDataset(Dataset):
         >>> dataset = TensorDataset(features, labels)
         >>> print(len(dataset))  # 3
         """
-        return len(self.tensor[0].data)
+        return len(self.tensors[0].data)
 
     def __getitem__(self, idx):
         """Return tuple of tensor slices at given index"""

@@ -14,3 +14,7 @@ from .core.dataloader import (
     RandomCrop,
     Compose,
 )
+
+from .core.autograd import enable_autograd
+
+enable_autograd()
