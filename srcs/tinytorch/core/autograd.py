@@ -76,9 +76,17 @@ class MulBackward(Function):
         grad_a = grad_b = None
 
         if isinstance(a, Tensor) and a.requires_grad:
-            grad_a = b * grad_output
+            if isinstance(b, Tensor):
+                grad_a = grad_output * b.data
+            else:
+                grad_a = grad_output * b
+
         if isinstance(b, Tensor) and b.requires_grad:
-            grad_b = a * grad_output
+            if isinstance(a, Tensor):
+                grad_b = grad_output * a.data
+            else:
+                grad_b = grad_output * a
+
         return grad_a, grad_b
 
 
@@ -864,6 +872,9 @@ def enable_autograd(quiet=False):
             return
 
         # Initialize gradient if not already set
+        if isinstance(gradient, Tensor):
+            gradient = gradient.data
+
         if gradient is None:
             if self.data.size == 1:
                 gradient = np.ones_like(self.data)
