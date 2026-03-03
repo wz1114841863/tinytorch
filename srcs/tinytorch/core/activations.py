@@ -173,7 +173,7 @@ class Softmax:
         """Return empth list (activations have no learnable parameters)."""
         return []
 
-    def forward(self, x, dim: int = -1):
+    def forward(self, x, dim=-1):
         """Apply softmax activation element-wise.
 
         EXAMPLE:
@@ -194,6 +194,6 @@ class Softmax:
         result = exp_values / exp_sum
         return result
 
-    def __call__(self, x):
+    def __call__(self, x, dim=-1):
         """Allows the activation to be called like a function."""
-        return self.forward(x)
+        return self.forward(x, dim=dim)
