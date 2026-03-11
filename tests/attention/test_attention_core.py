@@ -117,14 +117,24 @@ class TestScaledDotProductAttention:
         Q = Tensor(np.array([[[1.0, 0.0, 0.0, 0.0]]]))  # (1, 1, 4)
 
         # Keys: one similar to Q, others different
-        K = Tensor(np.array([[[
-            [1.0, 0.0, 0.0, 0.0],   # Very similar to Q
-            [0.0, 1.0, 0.0, 0.0],   # Orthogonal
-            [0.0, 0.0, 1.0, 0.0],   # Orthogonal
-        ]]]))  # (1, 1, 3, 4) - but we'll reshape
-        K = Tensor(np.array([[[1.0, 0.0, 0.0, 0.0],
-                              [0.0, 1.0, 0.0, 0.0],
-                              [0.0, 0.0, 1.0, 0.0]]]))  # (1, 3, 4)
+        K = Tensor(
+            np.array(
+                [
+                    [
+                        [
+                            [1.0, 0.0, 0.0, 0.0],  # Very similar to Q
+                            [0.0, 1.0, 0.0, 0.0],  # Orthogonal
+                            [0.0, 0.0, 1.0, 0.0],  # Orthogonal
+                        ]
+                    ]
+                ]
+            )
+        )  # (1, 1, 3, 4) - but we'll reshape
+        K = Tensor(
+            np.array(
+                [[[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0], [0.0, 0.0, 1.0, 0.0]]]
+            )
+        )  # (1, 3, 4)
 
         V = Tensor(np.random.randn(1, 3, 4))
 
@@ -284,3 +294,5 @@ class TestAttentionGradientFlow:
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
+    # tmp = TestAttentionGradientFlow()
+    # tmp.test_gradients_flow_to_input()

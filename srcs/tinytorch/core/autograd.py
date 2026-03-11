@@ -211,7 +211,7 @@ class TransposeBackward(Function):
                 axes = list(range(grad_output.ndim))
                 axes[self.dim0], axes[self.dim1] = axes[self.dim1], axes[self.dim0]
                 grad_a = np.transpose(grad_output, axes)
-        return grad_a
+        return (grad_a,)
 
 
 class PermuteBackward(Function):
@@ -346,8 +346,14 @@ class ReshapeBackward(Function):
         grad_x = None
 
         if isinstance(x, Tensor) and x.requires_grad:
-            grad_x = grad_output.reshape(self.original_shape)
-
+            # grad_x = grad_output.reshape(self.original_shape)
+            if grad_output.size == np.prod(self.original_shape):
+                grad_x = grad_output.reshape(self.original_shape)
+            else:
+                raise ValueError(
+                    f"Reshape Error: Size mismatch! "
+                    f"Grad size {grad_output.size} vs Original size {np.prod(self.original_shape)}"
+                )
         return (grad_x,)
 
 
