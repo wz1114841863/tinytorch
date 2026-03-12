@@ -29,5 +29,6 @@ from .core.transformers import (
 from .perf.profiling import Profiler, quick_profile
 from .perf.quantization import Quantizer
 from .perf.compression import Compressor
+from .perf.acceleration import vectorized_matmul, fused_gelu, tiled_matmul
 
 enable_autograd()
