@@ -27,5 +27,7 @@ from .core.transformers import (
     create_causal_mask,
 )
 from .perf.profiling import Profiler, quick_profile
+from .perf.quantization import Quantizer
+from .perf.compression import Compressor
 
 enable_autograd()
