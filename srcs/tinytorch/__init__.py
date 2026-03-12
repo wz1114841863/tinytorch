@@ -30,5 +30,7 @@ from .perf.profiling import Profiler, quick_profile
 from .perf.quantization import Quantizer
 from .perf.compression import Compressor
 from .perf.acceleration import vectorized_matmul, fused_gelu, tiled_matmul
+from .perf import benchmarking
+from . import olympics
 
 enable_autograd()
