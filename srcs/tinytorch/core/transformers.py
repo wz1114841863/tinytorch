@@ -331,3 +331,6 @@ def demonstrate_transformer_integration():
     print("(Note: Untrained model produces random text)")
 
     return model
+
+
+TinyGPT = GPT
